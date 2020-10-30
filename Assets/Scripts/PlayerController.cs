@@ -10,9 +10,9 @@ public class PlayerController : MonoBehaviour
     //public Animator Animator;
 
     //Type of actions
-    enum Action { Forward = 1, Backward = -1, Jump = 2, Attack = 3};
-    Action[] key_primary = new Action[2];
-    Action[] key_secondary = new Action[2];
+    public enum Action { Forward = 1, Backward = -1, Jump = 2, Attack = 3};
+    public Action[] key_primary = new Action[2];
+    public Action[] key_secondary = new Action[2];
     int lastAct1 = 1;
     int lastAct2 = 1;
 
@@ -43,12 +43,6 @@ public class PlayerController : MonoBehaviour
         if (Input.GetButtonDown(button))
         {
             lastAction = (lastAction + 1) % 2;
-            if (actions[lastAction] == Action.Attack && (Time.time >= next_attack))
-            {
-                next_attack = Time.time + attack_speed;
-                Attack();
-            }
-
             if (actions[lastAction] == Action.Jump && !jump && IsGrounded())
             {
                 jump = true;
@@ -61,6 +55,11 @@ public class PlayerController : MonoBehaviour
             if (actions[(lastAction + 1) % 2] == Action.Forward || actions[(lastAction + 1) % 2] == Action.Backward)
             {
                 motion = (int)actions[lastAction] * Speed;
+            }
+            if (actions[lastAction] == Action.Attack && (Time.time >= next_attack))
+            {
+                next_attack = Time.time + attack_speed;
+                Attack();
             }
         }
 
@@ -100,8 +99,8 @@ public class PlayerController : MonoBehaviour
 
     private void Move(float speed)
     {
-        Vector2 targetVelocity = new Vector2(speed, rigidBody.velocity.y);
-        rigidBody.velocity = Vector2.SmoothDamp(rigidBody.velocity, targetVelocity, ref velocity, MovementSmoothing);
+        //Vector2 targetVelocity = new Vector2(speed, rigidBody.velocity.y);
+        //rigidBody.velocity = Vector2.SmoothDamp(rigidBody.velocity, targetVelocity, ref velocity, MovementSmoothing);
 
         if (jump && IsGrounded())
         {
@@ -109,5 +108,10 @@ public class PlayerController : MonoBehaviour
             //Animator.SetBool("OnGround", false);
             rigidBody.AddForce(new Vector3(0f, JumpForce, 0f), ForceMode.Impulse);
         }
+    }
+
+    public string getString()
+    {
+        return Speed.ToString();
     }
 }
