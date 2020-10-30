@@ -6,7 +6,7 @@ public class PlayerController : MonoBehaviour
 {
     public float Speed = 10.0f;
     public float JumpForce = 30.0f;
-    [Range(0, .3f)] public float MovementSmoothing = .05f;
+    [Range(0, .3f)] public float MovementSmoothing = .1f;
     //public Animator Animator;
 
     //Type of actions
@@ -20,10 +20,10 @@ public class PlayerController : MonoBehaviour
     public float attack_speed = 1.0f;
     float next_attack = 0.0f;
 
-    private Rigidbody rigidBody;
     private float motion = 0;
     private bool jump = false;
     private float distToGround = 1f;
+    private Rigidbody rigidBody;
 
     private void Assign_Keys()
     {
@@ -62,7 +62,13 @@ public class PlayerController : MonoBehaviour
                 Attack();
             }
         }
-
+        if (Input.GetButtonUp(button))
+        {
+            if (actions[(lastAction + 1) % 2] == Action.Forward || actions[(lastAction + 1) % 2] == Action.Backward)
+            {
+                motion = 0;
+            }
+        }
         return lastAction;
     }
 
@@ -93,13 +99,16 @@ public class PlayerController : MonoBehaviour
 
     private void FixedUpdate()
     {
-       Move(motion * Time.fixedDeltaTime);
+        
+        Move(motion * Time.fixedDeltaTime);
     }
 
     private void Move(float speed)
     {
-        //Vector2 targetVelocity = new Vector2(speed, rigidBody.velocity.y);
-        //rigidBody.velocity = Vector2.SmoothDamp(rigidBody.velocity, targetVelocity, ref velocity, MovementSmoothing);
+        rigidBody.AddForce(Vector3.right * speed * 200);
+        /*Vector3 targetVelocity = new Vector3(speed, 0, rigidBody.velocity.y);
+        rigidBody.velocity = Vector3.SmoothDamp(transform.position, targetVelocity, ref velocity, MovementSmoothing);*/
+        //transform.position = new Vector3(transform.position.x * speed, transform.position.y, transform.position.z);
 
         if (jump && IsGrounded())
         {

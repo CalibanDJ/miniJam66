@@ -18,7 +18,7 @@ public class PlayerCameraScript : MonoBehaviour
         // Temporary vector
         Vector3 temp = player.transform.position;
         temp.x = temp.x;
-        temp.y = temp.y;
+        temp.y = temp.y + 5;
         temp.z = temp.z - distance;
         // Assign value to Camera position
         transform.position = temp;
