@@ -13,8 +13,8 @@ public class PlayerController : MonoBehaviour
     public enum Action { Forward = 1, Backward = -1, Jump = 2, Attack = 3};
     public Action[] key_primary = new Action[2];
     public Action[] key_secondary = new Action[2];
-    int lastAct1 = 1;
-    int lastAct2 = 1;
+    public int lastAct1 = 1;
+    public int lastAct2 = 1;
 
     //Attack variables
     public float attack_speed = 1.0f;
@@ -93,7 +93,6 @@ public class PlayerController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        Debug.Log(IsGrounded());
        Move(motion * Time.fixedDeltaTime);
     }
 
