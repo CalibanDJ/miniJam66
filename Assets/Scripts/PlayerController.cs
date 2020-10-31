@@ -8,7 +8,7 @@ public class PlayerController : MonoBehaviour
     public float Speed = 10.0f;
     public float JumpForce = 30.0f;
     [Range(0, .3f)] public float MovementSmoothing = .1f;
-    //public Animator Animator;
+    public Animator Animator;
 
     //Type of actions
     public enum Action { Forward = 1, Backward = -1, Jump = 2, Attack = 3};
@@ -23,6 +23,7 @@ public class PlayerController : MonoBehaviour
 
     private float motion = 0;
     private bool jump = false;
+    private bool facingRight = true;
     private float distToGround = 1f;
     private Rigidbody2D rigidBody;
     private Vector2 velocity = Vector2.zero;
@@ -99,6 +100,7 @@ public class PlayerController : MonoBehaviour
     private void Update()
     {
         Inputs();
+        Animator.SetFloat("HorizontalSpeed", Mathf.Abs(motion));
     }
 
     private void FixedUpdate()
@@ -128,7 +130,20 @@ public class PlayerController : MonoBehaviour
         //rigidBody.AddForce(Vector3.right * speed * 200);
         Vector3 targetVelocity = new Vector3(speed, rigidBody.velocity.y);
         rigidBody.velocity = Vector2.SmoothDamp(rigidBody.velocity, targetVelocity, ref velocity, MovementSmoothing);
-
+        
+        if (speed > 0.01 && !facingRight)
+        {
+            Animator.SetTrigger("RotateRight");
+            Animator.ResetTrigger("RotateLeft");
+            facingRight = true;
+        }
+        else if (speed < -0.01 && facingRight)
+        {
+            Animator.SetTrigger("RotateLeft");
+            Animator.ResetTrigger("RotateRight");
+            facingRight = false;
+        }
+        
         if (jump && Grounded)
         {
             jump = false;
