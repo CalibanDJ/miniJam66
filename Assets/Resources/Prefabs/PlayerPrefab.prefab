@@ -52,12 +52,14 @@ MonoBehaviour:
   JumpForce: 10
   MovementSmoothing: 0.1
   Animator: {fileID: 5077872570343015983}
+  Rotor: {fileID: 7372838764951852750}
   key_primary: 0000000000000000
   key_secondary: 0000000000000000
   lastAct1: 1
   lastAct2: 1
   attack_speed: 1
   damage_speed: 1
+  actual_hp: 5
 --- !u!114 &3112068153779837674
 MonoBehaviour:
   m_ObjectHideFlags: 0

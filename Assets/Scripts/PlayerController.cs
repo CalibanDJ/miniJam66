@@ -9,6 +9,7 @@ public class PlayerController : MonoBehaviour
     public float JumpForce = 30.0f;
     [Range(0, .3f)] public float MovementSmoothing = .1f;
     public Animator Animator;
+    public GameObject Rotor;
 
     //Type of actions
     public enum Action { Forward = 1, Backward = -1, Jump = 2, Attack = 3};
@@ -122,12 +123,14 @@ public class PlayerController : MonoBehaviour
         {
             Animator.SetTrigger("RotateRight");
             Animator.ResetTrigger("RotateLeft");
+            Rotor.transform.localRotation = Quaternion.LookRotation(Vector3.forward, Vector3.up);
             facingRight = true;
         }
         else if (speed < -0.01 && facingRight)
         {
             Animator.SetTrigger("RotateLeft");
             Animator.ResetTrigger("RotateRight");
+            Rotor.transform.localRotation = Quaternion.LookRotation(Vector3.back, Vector3.up);
             facingRight = false;
         }
         
