@@ -23,6 +23,17 @@ public class HUDController : MonoBehaviour
 
     int min = 1;
     bool sized = false;
+
+
+    //battery variables
+    public int max_hp = 5;
+    public int actual_hp = 5;
+    public float battery_margin = 0.9f;
+    GameObject battery;
+    float battery_height;
+    float battery_width;
+    GameObject[] hp = new GameObject[100];
+
     // Start is called before the first frame update
     void Start()
     {
@@ -46,6 +57,42 @@ public class HUDController : MonoBehaviour
         b2L.color = unselected;
         b2R.color = unselected;
 
+        battery = GameObject.Find("Battery");
+        battery_height = battery.GetComponent<RectTransform>().rect.height * battery_margin;
+        battery_width = battery.GetComponent<RectTransform>().rect.width * battery_margin;
+        float w_shift = (battery.GetComponent<RectTransform>().rect.width * (1 - battery_margin) / max_hp);
+        float h_shift = (battery.GetComponent<RectTransform>().rect.height * (1 - battery_margin) / max_hp);
+        for (int i = 0; i < actual_hp; i++)
+        {
+            GameObject NewObj = new GameObject("life "+(i+1));
+            hp[i] = NewObj;
+            Image NewImage = NewObj.AddComponent<Image>();
+            NewImage.color = GetColorBattery();
+            NewObj.GetComponent<RectTransform>().SetParent(battery.transform); //Assign the newly created Image GameObject as a Child of the Parent Panel.
+            NewObj.GetComponent<RectTransform>().sizeDelta = new Vector2(battery_width, battery_height/max_hp);
+            NewObj.GetComponent<RectTransform>().anchorMin = new Vector2(0, 0);
+            NewObj.GetComponent<RectTransform>().anchorMax = new Vector2(0, 0);
+            NewObj.GetComponent<RectTransform>().pivot = new Vector2(0.5f, 1f);
+            NewObj.GetComponent<RectTransform>().position = new Vector3(battery.transform.position.x + w_shift,
+                battery.transform.position.y - (battery_height / max_hp + h_shift) * (max_hp - i - 1) - h_shift,
+                battery.transform.position.z);
+            NewObj.SetActive(true);
+        }
+    }
+
+    Color GetColorBattery()
+    {
+        return actual_hp >= (2 *(float)max_hp /3)? new Color32(0, 255, 0, 255) :
+            actual_hp >= ((float)max_hp / 3) ? new Color32(255, 204, 0, 255) :
+            new Color32(255, 0, 0, 255);
+    }
+
+    void MajColor()
+    {
+        for (int i = 0; i < actual_hp; i++)
+        {
+            hp[i].GetComponent<Image>().color = GetColorBattery();
+        }
     }
 
     void SetSized()
@@ -72,7 +119,7 @@ public class HUDController : MonoBehaviour
     void FixedUpdate()
     {
         SetSized();
-
+            MajColor();
         if (player.lastAct1 == 0)
         {
             b1R.color = selected;
@@ -94,4 +141,8 @@ public class HUDController : MonoBehaviour
             b2L.color = selected;
         }
     }
+
+
+ 
+    
 }
