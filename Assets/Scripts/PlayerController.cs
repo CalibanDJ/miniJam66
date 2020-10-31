@@ -25,6 +25,10 @@ public class PlayerController : MonoBehaviour
     private float distToGround = 1f;
     private Rigidbody rigidBody;
 
+    //Attack variables
+    public float damage_speed = 1.0f;
+    float damage_attack = 0.0f;
+
     private void Assign_Keys()
     {
         key_primary[0] = Action.Forward;
@@ -115,6 +119,25 @@ public class PlayerController : MonoBehaviour
             jump = false;
             //Animator.SetBool("OnGround", false);
             rigidBody.AddForce(new Vector3(0f, JumpForce, 0f), ForceMode.Impulse);
+        }
+    }
+
+    private void OnCollisionEnter(Collision col)
+    {
+        ExecuteDamage(col);
+    }
+
+    private void OnCollisionStay(Collision col)
+    {
+        ExecuteDamage(col);
+    }
+
+    void ExecuteDamage(Collision col)
+    {
+        if (col.gameObject.tag == ("Ennemy") && (Time.time >= damage_attack))
+        {
+            damage_attack = Time.time + damage_speed;
+            Debug.Log("Cheh");
         }
     }
 
