@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 1848751700699378289}
   - component: {fileID: 3816849848532952552}
   - component: {fileID: 3924949078715015800}
+  - component: {fileID: 913503408768998634}
   m_Layer: 0
   m_Name: Papillotte
   m_TagString: Ennemy
@@ -70,6 +71,18 @@ CircleCollider2D:
   m_Offset: {x: -0.0012184381, y: 0}
   serializedVersion: 2
   m_Radius: 1.2012185
+--- !u!114 &913503408768998634
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1361148446708705483}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 26dfed705837bfb45a46e5c00995d698, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &6701427857513302795
 PrefabInstance:
   m_ObjectHideFlags: 0
