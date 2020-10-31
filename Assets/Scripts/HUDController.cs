@@ -60,7 +60,7 @@ public class HUDController : MonoBehaviour
         battery = GameObject.Find("Battery");
         battery_height = battery.GetComponent<RectTransform>().rect.height * battery_margin;
         battery_width = battery.GetComponent<RectTransform>().rect.width * battery_margin;
-        float w_shift = (battery.GetComponent<RectTransform>().rect.width * (1 - battery_margin) / max_hp);
+        float w_shift = (battery.GetComponent<RectTransform>().rect.width * (1 - battery_margin) / 2);
         float h_shift = (battery.GetComponent<RectTransform>().rect.height * (1 - battery_margin) / max_hp);
         for (int i = 0; i < actual_hp; i++)
         {
@@ -72,7 +72,7 @@ public class HUDController : MonoBehaviour
             NewObj.GetComponent<RectTransform>().sizeDelta = new Vector2(battery_width, battery_height/max_hp);
             NewObj.GetComponent<RectTransform>().anchorMin = new Vector2(0, 0);
             NewObj.GetComponent<RectTransform>().anchorMax = new Vector2(0, 0);
-            NewObj.GetComponent<RectTransform>().pivot = new Vector2(0.5f, 1f);
+            NewObj.GetComponent<RectTransform>().pivot = new Vector2(0f, 1f);
             NewObj.GetComponent<RectTransform>().position = new Vector3(battery.transform.position.x + w_shift,
                 battery.transform.position.y - (battery_height / max_hp + h_shift) * (max_hp - i - 1) - h_shift,
                 battery.transform.position.z);
