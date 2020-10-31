@@ -27,7 +27,7 @@ public class HUDController : MonoBehaviour
 
     //battery variables
     public int max_hp = 5;
-    public int actual_hp = 5;
+    public uint last_hp;
     public float battery_margin = 0.9f;
     GameObject battery;
     float battery_height;
@@ -38,6 +38,8 @@ public class HUDController : MonoBehaviour
     void Start()
     {
         player = GameObject.FindGameObjectsWithTag("Player")[0].GetComponent<PlayerController>();
+        last_hp = player.actual_hp;
+
         key1L = GameObject.Find("Text-Key1-L");
         key1R = GameObject.Find("Text-Key1-R");
         key2L = GameObject.Find("Text-Key2-L");
@@ -62,7 +64,8 @@ public class HUDController : MonoBehaviour
         battery_width = battery.GetComponent<RectTransform>().rect.width * battery_margin;
         float w_shift = (battery.GetComponent<RectTransform>().rect.width * (1 - battery_margin) / 2);
         float h_shift = (battery.GetComponent<RectTransform>().rect.height * (1 - battery_margin) / max_hp);
-        for (int i = 0; i < actual_hp; i++)
+
+        for (int i = 0; i < player.actual_hp; i++)
         {
             GameObject NewObj = new GameObject("life "+(i+1));
             hp[i] = NewObj;
@@ -82,14 +85,14 @@ public class HUDController : MonoBehaviour
 
     Color GetColorBattery()
     {
-        return actual_hp >= (2 *(float)max_hp /3)? new Color32(0, 255, 0, 255) :
-            actual_hp >= ((float)max_hp / 3) ? new Color32(255, 204, 0, 255) :
+        return player.actual_hp >= (2 *(float)max_hp /3)? new Color32(0, 255, 0, 255) :
+            player.actual_hp >= ((float)max_hp / 3) ? new Color32(255, 204, 0, 255) :
             new Color32(255, 0, 0, 255);
     }
 
     void MajColor()
     {
-        for (int i = 0; i < actual_hp; i++)
+        for (int i = 0; i < player.actual_hp; i++)
         {
             hp[i].GetComponent<Image>().color = GetColorBattery();
         }
@@ -116,10 +119,23 @@ public class HUDController : MonoBehaviour
         }
     }
 
+    void MajLife()
+    {
+        if(player.actual_hp != last_hp)
+        {
+            for(uint i = player.actual_hp; i < last_hp; i++)
+            {
+                Destroy(hp[i]);
+            }
+            last_hp = player.actual_hp;
+        }
+    }
+
     void FixedUpdate()
     {
         SetSized();
-            MajColor();
+        MajLife();
+        MajColor();
         if (player.lastAct1 == 0)
         {
             b1R.color = selected;

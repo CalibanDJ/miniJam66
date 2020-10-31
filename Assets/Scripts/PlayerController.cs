@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
@@ -25,10 +26,13 @@ public class PlayerController : MonoBehaviour
     private float distToGround = 1f;
     private Rigidbody2D rigidBody;
     private Vector2 velocity = Vector2.zero;
+    private bool Grounded;
 
     //Attack variables
     public float damage_speed = 1.0f;
     float damage_attack = 0.0f;
+
+    public uint actual_hp = 5;
 
     private void Assign_Keys()
     {
@@ -48,7 +52,7 @@ public class PlayerController : MonoBehaviour
         if (Input.GetButtonDown(button))
         {
             lastAction = (lastAction + 1) % 2;
-            if (actions[lastAction] == Action.Jump && !jump && IsGrounded())
+            if (actions[lastAction] == Action.Jump && !jump && Grounded)
             {
                 jump = true;
                 lastAction = (lastAction + 1) % 2;
@@ -65,6 +69,10 @@ public class PlayerController : MonoBehaviour
             {
                 next_attack = Time.time + attack_speed;
                 Attack();
+            }
+            if (actions[lastAction] == Action.Jump && !jump && Grounded)
+            {
+                jump = true;
             }
         }
         if (Input.GetButtonUp(button))
@@ -97,14 +105,10 @@ public class PlayerController : MonoBehaviour
         //Animator.SetFloat("VerticalSpeed", rigidBody.velocity.y);
     }
 
-    private bool IsGrounded()
-    {
-        return Physics2D.Raycast(transform.position, Vector2.down, distToGround);
-    }
-
     private void FixedUpdate()
     {
         Move(motion * Time.fixedDeltaTime);
+        IsDead();
     }
 
     private void Move(float speed)
@@ -113,30 +117,53 @@ public class PlayerController : MonoBehaviour
         Vector3 targetVelocity = new Vector3(speed, rigidBody.velocity.y);
         rigidBody.velocity = Vector2.SmoothDamp(rigidBody.velocity, targetVelocity, ref velocity, MovementSmoothing);
 
-        if (jump && IsGrounded())
+        if (jump && Grounded)
         {
             jump = false;
+            Grounded = false;
             //Animator.SetBool("OnGround", false);
             rigidBody.AddForce(new Vector3(0f, JumpForce, 0f), ForceMode2D.Impulse);
         }
     }
 
-    private void OnCollisionEnter(Collision col)
+    private void OnCollisionEnter2D(Collision2D col)
+    {
+        ExecuteDamage(col);
+        ExecuteGrounded(col);
+    }
+
+    private void OnCollisionStay2D(Collision2D col)
     {
         ExecuteDamage(col);
     }
 
-    private void OnCollisionStay(Collision col)
-    {
-        ExecuteDamage(col);
-    }
-
-    void ExecuteDamage(Collision col)
+    void ExecuteDamage(Collision2D col)
     {
         if (col.gameObject.tag == ("Ennemy") && (Time.time >= damage_attack))
         {
             damage_attack = Time.time + damage_speed;
-            Debug.Log("Cheh");
+            Hitted(1);
+        }
+    }
+
+    void ExecuteGrounded(Collision2D col)
+    {
+        if ( !(Grounded) && col.gameObject.tag == ("Ground"))
+        {
+            Grounded = true;
+        }
+    }
+
+    void Hitted(uint damage)
+    {
+        actual_hp = actual_hp - damage;
+    }
+
+    void IsDead()
+    {
+        if(actual_hp <= 0)
+        {
+            SceneManager.LoadScene("DeathScene");
         }
     }
 
