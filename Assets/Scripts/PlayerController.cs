@@ -24,6 +24,7 @@ public class PlayerController : MonoBehaviour
     private bool jump = false;
     private float distToGround = 1f;
     private Rigidbody2D rigidBody;
+    private Vector2 velocity = Vector2.zero;
 
     //Attack variables
     public float damage_speed = 1.0f;
@@ -98,21 +99,19 @@ public class PlayerController : MonoBehaviour
 
     private bool IsGrounded()
     {
-        return Physics.Raycast(transform.position, Vector3.down, distToGround);
+        return Physics2D.Raycast(transform.position, Vector2.down, distToGround);
     }
 
     private void FixedUpdate()
     {
-        
         Move(motion * Time.fixedDeltaTime);
     }
 
     private void Move(float speed)
     {
-        rigidBody.AddForce(Vector3.right * speed * 200);
-        /*Vector3 targetVelocity = new Vector3(speed, 0, rigidBody.velocity.y);
-        rigidBody.velocity = Vector3.SmoothDamp(transform.position, targetVelocity, ref velocity, MovementSmoothing);*/
-        //transform.position = new Vector3(transform.position.x * speed, transform.position.y, transform.position.z);
+        //rigidBody.AddForce(Vector3.right * speed * 200);
+        Vector3 targetVelocity = new Vector3(speed, rigidBody.velocity.y);
+        rigidBody.velocity = Vector2.SmoothDamp(rigidBody.velocity, targetVelocity, ref velocity, MovementSmoothing);
 
         if (jump && IsGrounded())
         {
