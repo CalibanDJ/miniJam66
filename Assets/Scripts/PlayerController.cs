@@ -23,7 +23,7 @@ public class PlayerController : MonoBehaviour
     private float motion = 0;
     private bool jump = false;
     private float distToGround = 1f;
-    private Rigidbody rigidBody;
+    private Rigidbody2D rigidBody;
 
     //Attack variables
     public float damage_speed = 1.0f;
@@ -38,7 +38,7 @@ public class PlayerController : MonoBehaviour
     }
     private void Awake()
     {
-        rigidBody = GetComponent<Rigidbody>();
+        rigidBody = GetComponent<Rigidbody2D>();
         Assign_Keys();
     }
 
@@ -118,7 +118,7 @@ public class PlayerController : MonoBehaviour
         {
             jump = false;
             //Animator.SetBool("OnGround", false);
-            rigidBody.AddForce(new Vector3(0f, JumpForce, 0f), ForceMode.Impulse);
+            rigidBody.AddForce(new Vector3(0f, JumpForce, 0f), ForceMode2D.Impulse);
         }
     }
 

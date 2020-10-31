@@ -10,9 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1833218754761798908}
   - component: {fileID: 1833218754761798904}
-  - component: {fileID: 1833218754761798909}
-  - component: {fileID: 2479528403184213112}
   - component: {fileID: 3112068153779837674}
+  - component: {fileID: 8799618953689439767}
+  - component: {fileID: 2058372855436954765}
   m_Layer: 0
   m_Name: PlayerPrefab
   m_TagString: Player
@@ -55,36 +55,7 @@ MonoBehaviour:
   lastAct1: 1
   lastAct2: 1
   attack_speed: 1
---- !u!54 &1833218754761798909
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1833218754761798907}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 1
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 120
-  m_CollisionDetection: 0
---- !u!64 &2479528403184213112
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1833218754761798907}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 1
-  m_CookingOptions: -1
-  m_Mesh: {fileID: -2432090755550338912, guid: 54ab674b5d11f0d40b4edd6af216c82b, type: 3}
+  damage_speed: 1
 --- !u!114 &3112068153779837674
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -98,6 +69,43 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerHand: {fileID: 0}
+--- !u!50 &8799618953689439767
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1833218754761798907}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 6200000, guid: 416b0ed03286655408fb80c4ebd911b5, type: 2}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 1
+  m_Constraints: 4
+--- !u!70 &2058372855436954765
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1833218754761798907}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.041499853, y: 2.093065}
+  m_Size: {x: 0.8753457, y: 4.2180066}
+  m_Direction: 0
 --- !u!1 &7489335501907127679
 GameObject:
   m_ObjectHideFlags: 0
