@@ -216,11 +216,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 978779106028038536, guid: 1d11a86d80333e046bfe0319a6b957f4, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 5
+      value: 4.9999948
       objectReference: {fileID: 0}
     - target: {fileID: 978779106028038536, guid: 1d11a86d80333e046bfe0319a6b957f4, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 17
+      value: -49
       objectReference: {fileID: 0}
     - target: {fileID: 978779106028038536, guid: 1d11a86d80333e046bfe0319a6b957f4, type: 3}
       propertyPath: m_SizeDelta.x
@@ -924,11 +924,11 @@ RectTransform:
   m_Father: {fileID: 1929904423}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 1}
-  m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 28, y: 291}
-  m_SizeDelta: {x: 200, y: 50}
-  m_Pivot: {x: 0.5, y: 1}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 246.5}
+  m_SizeDelta: {x: 464.38214, y: 43}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &887728616
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -949,7 +949,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: LE JEU
+  m_text: SWEETERMINATOR
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -983,7 +983,7 @@ MonoBehaviour:
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 1
-  m_HorizontalAlignment: 1
+  m_HorizontalAlignment: 2
   m_VerticalAlignment: 256
   m_textAlignment: 65535
   m_characterSpacing: 0
@@ -1300,11 +1300,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 978779106028038536, guid: 1d11a86d80333e046bfe0319a6b957f4, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 5.6
+      value: 5.600011
       objectReference: {fileID: 0}
     - target: {fileID: 978779106028038536, guid: 1d11a86d80333e046bfe0319a6b957f4, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -94
+      value: -160.00002
       objectReference: {fileID: 0}
     - target: {fileID: 978779106028038536, guid: 1d11a86d80333e046bfe0319a6b957f4, type: 3}
       propertyPath: m_SizeDelta.x
@@ -1681,11 +1681,11 @@ RectTransform:
   m_Father: {fileID: 1929904423}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 1}
-  m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: -9, y: 299}
-  m_SizeDelta: {x: 278.08032, y: 100}
-  m_Pivot: {x: 0.5, y: 1}
+  m_AnchorMin: {x: 0.36066645, y: 0.85833335}
+  m_AnchorMax: {x: 0.636778, y: 0.9466667}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0.000030517578, y: 0.000011444092}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1565853691
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1772,12 +1772,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
   m_ReferenceResolution: {x: 800, y: 600}
   m_ScreenMatchMode: 0
-  m_MatchWidthOrHeight: 0
+  m_MatchWidthOrHeight: 1
   m_PhysicalUnit: 3
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
@@ -1871,10 +1871,10 @@ RectTransform:
   m_Father: {fileID: 1610460763}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -64}
-  m_SizeDelta: {x: 100, y: 100}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1929904424
 MonoBehaviour:
@@ -2055,11 +2055,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 978779106028038536, guid: 1d11a86d80333e046bfe0319a6b957f4, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 5
+      value: 4.9999948
       objectReference: {fileID: 0}
     - target: {fileID: 978779106028038536, guid: 1d11a86d80333e046bfe0319a6b957f4, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 163
+      value: 96.99997
       objectReference: {fileID: 0}
     - target: {fileID: 978779106028038536, guid: 1d11a86d80333e046bfe0319a6b957f4, type: 3}
       propertyPath: m_SizeDelta.x
