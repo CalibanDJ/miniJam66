@@ -963,10 +963,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 150545565221046444, guid: 57490d07b791a61428ca810a1c78fa5e, type: 3}
-      propertyPath: m_Name
-      value: NumEnemy
-      objectReference: {fileID: 0}
     - target: {fileID: 150545565682190740, guid: 57490d07b791a61428ca810a1c78fa5e, type: 3}
       propertyPath: m_Camera
       value: 
