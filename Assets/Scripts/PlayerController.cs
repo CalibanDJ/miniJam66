@@ -58,7 +58,6 @@ public class PlayerController : MonoBehaviour
             if (actions[lastAction] == Action.Jump && !jump && IsGrounded())
             {
                 jump = true;
-                lastAction = (lastAction + 1) % 2;
             }
         }
 

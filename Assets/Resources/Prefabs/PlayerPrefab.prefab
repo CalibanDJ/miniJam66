@@ -49,7 +49,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Speed: 500
-  JumpForce: 10
+  JumpForce: 1.5
   MovementSmoothing: 0.1
   Animator: {fileID: 5077872570343015983}
   Rotor: {fileID: 7372838764951852750}
