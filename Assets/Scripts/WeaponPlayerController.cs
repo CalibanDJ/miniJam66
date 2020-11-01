@@ -24,4 +24,20 @@ public class WeaponPlayerController : MonoBehaviour
         animator.SetTrigger("Attack");
         EquippedWeapon.GetComponent<IWeapon>().PerformAttack();
     }
+
+    void Update()
+    {
+        colliderWeapon();
+    }
+
+    void colliderWeapon()
+    {
+        if (animator.GetCurrentAnimatorStateInfo(0).IsTag("Attack"))
+        {
+            EquippedWeapon.GetComponent<BoxCollider2D>().enabled = true;
+        } else
+        {
+            EquippedWeapon.GetComponent<BoxCollider2D>().enabled = false;
+        }
+    }
 }
