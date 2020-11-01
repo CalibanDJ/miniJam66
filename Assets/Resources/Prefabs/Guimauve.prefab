@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: -6092307240412036830}
   m_Layer: 0
   m_Name: Guimauve
-  m_TagString: Untagged
+  m_TagString: Ennemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -50,11 +50,11 @@ Rigidbody2D:
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 70e20cbf0c7baf44f84be82fbe28e81b, type: 2}
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 0
+  m_CollisionDetection: 1
+  m_Constraints: 4
 --- !u!61 &2048555475723279232
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -68,7 +68,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.0046352744, y: 0.046352625}
+  m_Offset: {x: 0.105110586, y: 0.046352625}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -79,7 +79,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 2.0104866, y: 3.6513686}
+  m_Size: {x: 2.2299786, y: 3.6513686}
   m_EdgeRadius: 0
 --- !u!114 &-6092307240412036830
 MonoBehaviour:
@@ -93,6 +93,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5beb3a81c239a654882f20c00bab9a38, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 0}
+  speed: 0.05
+  rigidBody: {fileID: 0}
+  hp: 0
+  Grounded: 0
+  JumpForce: 10
+  attack_speed: 7
 --- !u!1 &7327076758203783798
 GameObject:
   m_ObjectHideFlags: 0

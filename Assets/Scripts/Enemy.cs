@@ -8,6 +8,8 @@ public class Enemy : MonoBehaviour
     public float speed = 0.08f;
     public Rigidbody2D rigidBody;
     public int hp;
+    public bool Grounded = false;
+    public float JumpForce = 30.0f;
 
     public void SetDirection()
     {
@@ -42,4 +44,20 @@ public class Enemy : MonoBehaviour
             hp--;
         }
     }
+
+    private void OnCollisionEnter2D(Collision2D col)
+    {
+        ExecuteGrounded(col);
+    }
+
+    void ExecuteGrounded(Collision2D col)
+    {
+        if ( !(Grounded) && col.gameObject.tag == ("Ground"))
+        {
+            Grounded = true;
+        }
+    }
+
+
+  
 }
