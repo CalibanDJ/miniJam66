@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class VomitEnemy : Direction
+public class VomitEnemy : Enemy
 {
     PlayerController player;
     public float attack_speed = 7.0f;

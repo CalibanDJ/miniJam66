@@ -95,7 +95,7 @@ public class PlayerController : MonoBehaviour
 
     private void Attack()
     {
-
+        this.GetComponent<WeaponPlayerController>().PerformWeaponAttack(Speed < -0.01);
     }
 
     private void Update()
@@ -108,23 +108,8 @@ public class PlayerController : MonoBehaviour
     {
         Move(motion * Time.fixedDeltaTime);
         IsDead();
-        Direction();
     }
-
-    private void Direction()
-    {
-        if(rigidBody.velocity.x > 0 && transform.rotation.eulerAngles.y != 0)
-        {
-            var rotationVector = transform.rotation.eulerAngles;
-            rotationVector.y = 0;
-            transform.rotation = Quaternion.Euler(rotationVector);
-        } else if (rigidBody.velocity.x < 0 && transform.rotation.eulerAngles.y != 180)
-        {
-            var rotationVector = transform.rotation.eulerAngles;
-            rotationVector.y = 180;
-            transform.rotation = Quaternion.Euler(rotationVector);
-        }
-    }
+    
 
     private void Move(float speed)
     {

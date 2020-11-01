@@ -10,4 +10,6 @@ public class Sword : MonoBehaviour, IWeapon
     {
         Debug.Log("Sword Attack");
     }
+
+    
 }

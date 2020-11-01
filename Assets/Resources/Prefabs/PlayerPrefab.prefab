@@ -72,7 +72,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a9e58b2d75abd7a42aa8054a21a16a62, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerHand: {fileID: 6612841924719881718}
+  playerHand: {fileID: 1075003078456372878}
 --- !u!50 &8799618953689439767
 Rigidbody2D:
   serializedVersion: 4
@@ -361,13 +361,13 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7901ee18cf878674da0fadd3a4202fbd, type: 3}
---- !u!1 &6612841924719881718 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 7901ee18cf878674da0fadd3a4202fbd, type: 3}
-  m_PrefabInstance: {fileID: 6270384385026953383}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &5804673852043523916 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 7901ee18cf878674da0fadd3a4202fbd, type: 3}
+  m_PrefabInstance: {fileID: 6270384385026953383}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1075003078456372878 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6480623767174774313, guid: 7901ee18cf878674da0fadd3a4202fbd, type: 3}
   m_PrefabInstance: {fileID: 6270384385026953383}
   m_PrefabAsset: {fileID: 0}

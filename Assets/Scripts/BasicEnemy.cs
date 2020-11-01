@@ -2,13 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BasicEnemy : Direction
+public class BasicEnemy : Enemy
 {
     
 
     // Start is called before the first frame update
     void Start()
     {
+        hp = 1;
         player = GameObject.FindGameObjectsWithTag("Player")[0].GetComponent<PlayerController>();
         rigidBody = GetComponent<Rigidbody2D>();
     }
@@ -18,6 +19,7 @@ public class BasicEnemy : Direction
     {
         Follow();
         SetDirection();
+        CheckStatus();
     }
 
    
