@@ -13,6 +13,7 @@ public class VomitEnemy : Enemy
         hp = 2;
         player = GameObject.FindGameObjectsWithTag("Player")[0].GetComponent<PlayerController>();
         rigidBody = GetComponent<Rigidbody2D>();
+        source = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame

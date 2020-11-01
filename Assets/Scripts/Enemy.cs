@@ -11,6 +11,7 @@ public class Enemy : MonoBehaviour
     public bool Grounded = false;
     public float JumpForce = 30.0f;
     public float DistanceDetection = 10.0f;
+    public AudioSource source;
 
     public void SetDirection()
     {
@@ -47,6 +48,11 @@ public class Enemy : MonoBehaviour
     {
         if (col.gameObject.tag == ("Weapon"))
         {
+            if (source != null)
+            {
+                source.Play();
+            }
+
             hp--;
         }
     }

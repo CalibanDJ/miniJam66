@@ -101,6 +101,7 @@ MonoBehaviour:
   Grounded: 0
   JumpForce: 10
   DistanceDetection: 10
+  source: {fileID: 0}
   attack_speed: 7
 --- !u!82 &3522324131381564640
 AudioSource:
@@ -120,7 +121,7 @@ AudioSource:
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
-  Priority: 128
+  Priority: 161
   DopplerLevel: 1
   MinDistance: 1
   MaxDistance: 500

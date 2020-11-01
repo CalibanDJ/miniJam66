@@ -12,6 +12,7 @@ public class BasicEnemy : Enemy
         hp = 1;
         player = GameObject.FindGameObjectsWithTag("Player")[0].GetComponent<PlayerController>();
         rigidBody = GetComponent<Rigidbody2D>();
+        source = GetComponent<AudioSource>();
     }
 
 
