@@ -15,6 +15,7 @@ public class PlayerController : MonoBehaviour
     public enum Action { Forward = 1, Backward = -1, Jump = 2, Attack = 3};
     public Action[] key_primary = new Action[2];
     public Action[] key_secondary = new Action[2];
+    public bool key_update = true;
     public int lastAct1 = 1;
     public int lastAct2 = 1;
 
@@ -158,6 +159,12 @@ public class PlayerController : MonoBehaviour
             damage_attack = Time.time + damage_speed;
             Hitted(1);
         }
+        else if (col.gameObject.tag == ("EnnemyConfusion") && (Time.time >= damage_attack))
+        {
+            Destroy(col.gameObject);
+            damage_attack = Time.time + damage_speed;
+            RandomizeActions();
+        }
     }
 
     void ExecuteGrounded(Collision2D col)
@@ -189,5 +196,22 @@ public class PlayerController : MonoBehaviour
     bool IsGrounded()
     {
         return Physics2D.Raycast(transform.position - new Vector3(0, transform.localScale.y / 2, 0), Vector3.down, distToGround, ~(1 << 9));
+    }
+
+    public void RandomizeActions()
+    {
+        for (int i = 0; i < 2; i++)
+        {
+            int index = Random.Range(i, 4);
+            var arr = index > 2 ? key_secondary : key_primary;
+            var tmp = arr[index & 1];
+            arr[index & 1] = key_primary[i];
+            key_primary[i] = tmp;
+        }
+        int index2 = Random.Range(0, 2);
+        var tmp2 = key_secondary[index2];
+        key_secondary[index2] = key_secondary[0];
+        key_secondary[0] = tmp2;
+        key_update = true;
     }
 }

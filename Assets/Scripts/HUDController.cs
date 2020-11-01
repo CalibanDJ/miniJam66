@@ -44,10 +44,7 @@ public class HUDController : MonoBehaviour
         key1R = GameObject.Find("Text-Key1-R");
         key2L = GameObject.Find("Text-Key2-L");
         key2R = GameObject.Find("Text-Key2-R");
-        key1R.GetComponent<UnityEngine.UI.Text>().text = player.key_primary[0].ToString();
-        key1L.GetComponent<UnityEngine.UI.Text>().text = player.key_primary[1].ToString();
-        key2R.GetComponent<UnityEngine.UI.Text>().text = player.key_secondary[0].ToString();
-        key2L.GetComponent<UnityEngine.UI.Text>().text = player.key_secondary[1].ToString();
+        MajKeys();
 
         b1L = GameObject.Find("Key1-L").GetComponent<Image>();
         b1R = GameObject.Find("Key1-R").GetComponent<Image>();
@@ -131,11 +128,25 @@ public class HUDController : MonoBehaviour
         }
     }
 
+    void MajKeys()
+    {
+        if (player.key_update)
+        {
+            player.key_update = false;
+
+            key1R.GetComponent<UnityEngine.UI.Text>().text = player.key_primary[0].ToString();
+            key1L.GetComponent<UnityEngine.UI.Text>().text = player.key_primary[1].ToString();
+            key2R.GetComponent<UnityEngine.UI.Text>().text = player.key_secondary[0].ToString();
+            key2L.GetComponent<UnityEngine.UI.Text>().text = player.key_secondary[1].ToString();
+        }
+    }
+
     void FixedUpdate()
     {
         SetSized();
         MajLife();
         MajColor();
+        MajKeys();
         if (player.lastAct1 == 0)
         {
             b1R.color = selected;

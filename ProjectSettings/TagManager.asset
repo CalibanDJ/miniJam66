@@ -8,6 +8,7 @@ TagManager:
   - Ennemy
   - Weapon
   - number_killed
+  - EnnemyConfusion
   layers:
   - Default
   - TransparentFX
