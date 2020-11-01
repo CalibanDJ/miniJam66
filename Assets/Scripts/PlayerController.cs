@@ -56,18 +56,9 @@ public class PlayerController : MonoBehaviour
 
     private int OnBDown(string button, Action[] actions, int lastAction)
     {
-        if (Input.GetButtonDown(button))
-        {
-            lastAction = (lastAction + 1) % 2;
-            if (actions[lastAction] == Action.Jump && !jump && IsGrounded())
-            {
-                jump = true;
-            }
-        }
-
         if (Input.GetButton(button))
         {
-            if (actions[(lastAction + 1) % 2] == Action.Forward || actions[(lastAction + 1) % 2] == Action.Backward)
+            if (actions[lastAction] == Action.Forward || actions[lastAction] == Action.Backward)
             {
                 motion = (int)actions[lastAction] * Speed;
             }
@@ -83,10 +74,11 @@ public class PlayerController : MonoBehaviour
         }
         if (Input.GetButtonUp(button))
         {
-            if (actions[(lastAction + 1) % 2] == Action.Forward || actions[(lastAction + 1) % 2] == Action.Backward)
+            if (actions[lastAction] == Action.Forward || actions[lastAction] == Action.Backward)
             {
                 motion = 0;
             }
+            lastAction = (lastAction + 1) % 2;
         }
         return lastAction;
     }
@@ -218,6 +210,7 @@ public class PlayerController : MonoBehaviour
         var tmp2 = key_secondary[index2];
         key_secondary[index2] = key_secondary[0];
         key_secondary[0] = tmp2;
+        motion = 0;
         key_update = true;
     }
 }
