@@ -5,8 +5,17 @@ using UnityEngine.SceneManagement;
 
 public class EndScoreController : MonoBehaviour
 {
+
+    public static int score = 0;
+
     public static void majScore(int n)
     {
-        GameObject.Find("NumEnemy").GetComponent<UnityEngine.UI.Text>().text = n.ToString();
+        score += n;
+    }
+
+    void Start()
+    {
+        GameObject.Find("num").GetComponent<UnityEngine.UI.Text>().text = score.ToString();
+        score = 0;
     }
 }

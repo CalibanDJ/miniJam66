@@ -38,6 +38,7 @@ public class Enemy : MonoBehaviour
     {
         if(hp <= 0)
         {
+            EndScoreController.majScore(1);
             Destroy(gameObject);
         }
     }
