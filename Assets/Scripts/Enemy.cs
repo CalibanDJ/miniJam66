@@ -5,7 +5,7 @@ using UnityEngine;
 public class Enemy : MonoBehaviour
 {
     public PlayerController player;
-    public float speed = 0.03f;
+    public float speed = 0.08f;
     public Rigidbody2D rigidBody;
     public int hp;
 
@@ -13,16 +13,13 @@ public class Enemy : MonoBehaviour
     {
         if (rigidBody.velocity.x > 0 && transform.rotation.eulerAngles.y != 0)
         {
-            var rotationVector = transform.rotation.eulerAngles;
-            rotationVector.y = 0;
-            transform.rotation = Quaternion.Euler(rotationVector);
+            transform.localRotation = Quaternion.LookRotation(Vector3.forward, Vector3.up);
         }
         else if (rigidBody.velocity.x < 0 && transform.rotation.eulerAngles.y != 180)
         {
-            var rotationVector = transform.rotation.eulerAngles;
-            rotationVector.y = 180;
-            transform.rotation = Quaternion.Euler(rotationVector);
+            transform.localRotation = Quaternion.LookRotation(Vector3.back, Vector3.up);
         }
+
     }
 
     public void Follow()
@@ -38,7 +35,7 @@ public class Enemy : MonoBehaviour
         }
     }
 
-    private void OnCollisionEnter2D(Collision2D col)
+    private void OnTriggerEnter2D(Collider2D col)
     {
         if (col.gameObject.tag == ("Weapon"))
         {

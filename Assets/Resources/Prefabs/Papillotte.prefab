@@ -68,9 +68,9 @@ CircleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.0012184381, y: 0}
+  m_Offset: {x: -0.023934841, y: 0.011358261}
   serializedVersion: 2
-  m_Radius: 1.2012185
+  m_Radius: 1.2466516
 --- !u!114 &913503408768998634
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -83,6 +83,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 26dfed705837bfb45a46e5c00995d698, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 0}
+  speed: 0.08
+  rigidBody: {fileID: 0}
+  hp: 0
 --- !u!1001 &6701427857513302795
 PrefabInstance:
   m_ObjectHideFlags: 0

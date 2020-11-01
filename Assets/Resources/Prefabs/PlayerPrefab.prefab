@@ -72,6 +72,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a9e58b2d75abd7a42aa8054a21a16a62, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  weaponPrefab: {fileID: 6938775061262338677, guid: 0c0a0774c5762974481c340426fb3d71, type: 3}
   playerHand: {fileID: 1075003078456372878}
 --- !u!50 &8799618953689439767
 Rigidbody2D:
