@@ -641,7 +641,7 @@ MonoBehaviour:
   selected: {r: 0.65882355, g: 0.65882355, b: 0.65882355, a: 0.27450982}
   unselected: {r: 0.40784314, g: 0.40784314, b: 0.40784314, a: 0.27450982}
   max_hp: 5
-  actual_hp: 5
+  last_hp: 0
   battery_margin: 0.9
 --- !u!1 &420356432
 GameObject:
@@ -1253,14 +1253,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2058372855436954765, guid: 321fc0192c890f3408cc3d204bb0b7bb, type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3112068153779837674, guid: 321fc0192c890f3408cc3d204bb0b7bb, type: 3}
-      propertyPath: playerHand
-      value: 
-      objectReference: {fileID: 1706442977}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 321fc0192c890f3408cc3d204bb0b7bb, type: 3}
 --- !u!1 &1159586085
@@ -1741,11 +1733,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1706442977 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7489335501907127679, guid: 321fc0192c890f3408cc3d204bb0b7bb, type: 3}
-  m_PrefabInstance: {fileID: 1128718710}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1811843066
 GameObject:
   m_ObjectHideFlags: 0
