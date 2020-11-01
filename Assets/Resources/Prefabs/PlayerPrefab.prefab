@@ -74,6 +74,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weaponPrefab: {fileID: 6938775061262338677, guid: 0c0a0774c5762974481c340426fb3d71, type: 3}
   playerHand: {fileID: 1075003078456372878}
+  animator: {fileID: 5077872570343015983}
 --- !u!50 &8799618953689439767
 Rigidbody2D:
   serializedVersion: 4
