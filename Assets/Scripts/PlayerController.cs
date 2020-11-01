@@ -35,7 +35,9 @@ public class PlayerController : MonoBehaviour
     public float damage_speed = 1.0f;
     float damage_attack = 0.0f;
 
-    public uint actual_hp = 5;    
+    public uint actual_hp = 5;
+
+    private AudioSource source;
 
     private void Assign_Keys()
     {
@@ -47,6 +49,7 @@ public class PlayerController : MonoBehaviour
     private void Awake()
     {
         rigidBody = GetComponent<Rigidbody2D>();
+        source = GetComponent<AudioSource>();
         Assign_Keys();
         distToGround = 0.1f;
     }
@@ -97,6 +100,7 @@ public class PlayerController : MonoBehaviour
     private void Attack()
     {
         this.GetComponent<WeaponPlayerController>().PerformWeaponAttack(Speed < -0.01);
+        source.Play();
     }
 
     private void Update()
