@@ -10,6 +10,7 @@ public class Enemy : MonoBehaviour
     public int hp;
     public bool Grounded = false;
     public float JumpForce = 30.0f;
+    public float DistanceDetection = 10.0f;
 
     public void SetDirection()
     {
@@ -26,7 +27,11 @@ public class Enemy : MonoBehaviour
 
     public void Follow()
     {
-        transform.position = Vector3.MoveTowards(transform.position, player.transform.position, speed);
+        if (Mathf.Sqrt(Mathf.Pow(transform.position.x - player.transform.position.x, 2.0f)) <= DistanceDetection)
+        {
+            transform.position = Vector3.MoveTowards(transform.position, player.transform.position, speed);
+        }
+        
     }
 
     public void CheckStatus()
