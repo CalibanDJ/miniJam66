@@ -34,7 +34,7 @@ public class PlayerController : MonoBehaviour
     public float damage_speed = 1.0f;
     float damage_attack = 0.0f;
 
-    public uint actual_hp = 5;
+    public uint actual_hp = 5;    
 
     private void Assign_Keys()
     {
@@ -47,6 +47,7 @@ public class PlayerController : MonoBehaviour
     {
         rigidBody = GetComponent<Rigidbody2D>();
         Assign_Keys();
+        distToGround = 0.1f;
     }
 
     private int OnBDown(string button, Action[] actions, int lastAction)
@@ -54,7 +55,7 @@ public class PlayerController : MonoBehaviour
         if (Input.GetButtonDown(button))
         {
             lastAction = (lastAction + 1) % 2;
-            if (actions[lastAction] == Action.Jump && !jump && Grounded)
+            if (actions[lastAction] == Action.Jump && !jump && IsGrounded())
             {
                 jump = true;
                 lastAction = (lastAction + 1) % 2;
@@ -72,7 +73,7 @@ public class PlayerController : MonoBehaviour
                 next_attack = Time.time + attack_speed;
                 Attack();
             }
-            if (actions[lastAction] == Action.Jump && !jump && Grounded)
+            if (actions[lastAction] == Action.Jump && !jump && IsGrounded())
             {
                 jump = true;
             }
@@ -132,10 +133,9 @@ public class PlayerController : MonoBehaviour
             facingRight = false;
         }
         
-        if (jump && Grounded)
+        if (jump && IsGrounded())
         {
             jump = false;
-            Grounded = false;
             //Animator.SetBool("OnGround", false);
             rigidBody.AddForce(new Vector3(0f, JumpForce, 0f), ForceMode2D.Impulse);
         }
@@ -144,7 +144,7 @@ public class PlayerController : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D col)
     {
         ExecuteDamage(col);
-        ExecuteGrounded(col);
+        //ExecuteGrounded(col);
     }
 
     private void OnCollisionStay2D(Collision2D col)
@@ -185,5 +185,10 @@ public class PlayerController : MonoBehaviour
     public string getString()
     {
         return Speed.ToString();
+    }
+
+    bool IsGrounded()
+    {
+        return Physics2D.Raycast(transform.position - new Vector3(0, transform.localScale.y / 2, 0), Vector3.down, distToGround, ~(1 << 9));
     }
 }
