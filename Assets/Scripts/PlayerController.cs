@@ -188,6 +188,8 @@ public class PlayerController : MonoBehaviour
     {
         if(actual_hp <= 0)
         {
+            EndScoreController.changeLevel();
+            MainMenu.lastLevel(SceneManager.GetActiveScene().buildIndex);
             SceneManager.LoadScene("DeathScene");
         }
     }

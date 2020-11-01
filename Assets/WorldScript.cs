@@ -28,6 +28,8 @@ public class WorldScript : MonoBehaviour
         MajEnemy();
         if(numEnemy <= 0)
         {
+            EndScoreController.changeLevel();
+            MainMenu.lastLevel(SceneManager.GetActiveScene().buildIndex);
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         }
     }
